@@ -120,4 +120,20 @@
 
 	\end{description}
 
+	\section*{Exercise 10}
+	\begin{description}
+		\item[Centralized Approach] In the centralized approach to achieve mutual exclusion there is one coordinator that gives access to a resource. He gets a request from a process, then sends a OK to the process and revives a release form the process when he is done. If a process has to wait, he just does not get a OK. It is not possible for the process to know whether he has to wait, or the coordinator has failed. 
+		
+		\item[Distributed Approach] In the distributed approach to achieve mutual exclusion a node sends a Request to everyone and waits for the ok of everyone (or the majority in Maekawa Algorithm). It is very error prone, since the failure of one process can prohibit all the others from doing anything. 
+		
+		\item[Ring-Token Approach] In the ring token approach to achieve mutual exclusion a token is passed in the ring. Only the Process having the token can access the resource. If a process does not need the resource or is done with it, it passes the token on to the next process. 
+		
+		\item[Maekawa Algorithm]
+		
+		\item[Bully Algorithm] The bully Algorithm is used to handle the failure of a coordinator in a centralized approach. When one node notices that the coordinator has failed, the node starts an election: It sends every other node with higher ID an election message upon which the later node also starts an election and sends an ok message to the former node. The node that does not get any OK messages (thus the node with the highest ID that is working) is the new coordinator and sends a coordinator message to all the other nodes. 
+		
+		\item[Ring Algorithm] The Ring algorithm is also for replacing a failed coordinator. The election works as follows: The noticing node starts the election, writes its id into an array and passes that array in a ring. Every other node writes its ID into the array. The staring node receives the array once again and selects the Process with the highest ID to be the coordinator. 
+		
+		\item[Reliable Multicast Algorithm] With a reliable multicast algorithm, either all working nodes or none of the working nodes in a group get the message. The mutlicast is not reliable if some get the message while others don't. This is achieved by the reciver helping the sender and sending the message also to all the other nodes. 
+	\end{description}
  \end{document}
